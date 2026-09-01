@@ -1,0 +1,119 @@
+/* MyArchie · Waybar — Catppuccin Mocha */
+
+@define-color base     #1e1e2e;
+@define-color mantle   #181825;
+@define-color surface0 #313244;
+@define-color surface1 #45475a;
+@define-color text     #cdd6f4;
+@define-color subtext  #a6adc8;
+@define-color blue     #89b4fa;
+@define-color mauve    #cba6f7;
+@define-color green    #a6e3a1;
+@define-color yellow   #f9e2af;
+@define-color peach    #fab387;
+@define-color red      #f38ba8;
+
+* {
+  font-family: "JetBrainsMono Nerd Font", "Noto Sans", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+}
+
+window#waybar {
+  background: transparent;
+  color: @text;
+}
+
+/* Cada grupo de módulos es una "píldora" */
+.modules-left, .modules-center, .modules-right {
+  background: alpha(@base, 0.85);
+  border: 1px solid @surface0;
+  border-radius: 12px;
+  padding: 0 6px;
+}
+
+#workspaces { padding: 0 2px; }
+
+#workspaces button {
+  padding: 0 8px;
+  margin: 4px 2px;
+  color: @subtext;
+  background: transparent;
+  border-radius: 8px;
+  transition: all 200ms ease;
+}
+
+#workspaces button:hover {
+  background: @surface0;
+  color: @text;
+}
+
+#workspaces button.active {
+  background: @blue;
+  color: @base;
+  padding: 0 14px;
+}
+
+#workspaces button.urgent {
+  background: @red;
+  color: @base;
+}
+
+#window {
+  color: @subtext;
+  padding: 0 10px;
+  font-style: italic;
+}
+
+window#waybar.empty #window { background: transparent; }
+
+#clock {
+  color: @mauve;
+  font-weight: bold;
+  padding: 0 14px;
+}
+
+#cpu, #memory, #temperature, #battery, #network, #pulseaudio, #tray, #custom-power {
+  padding: 0 10px;
+  margin: 4px 1px;
+  border-radius: 8px;
+  color: @text;
+}
+
+#cpu         { color: @blue;   }
+#memory      { color: @mauve;  }
+#temperature { color: @peach;  }
+#network     { color: @green;  }
+#pulseaudio  { color: @yellow; }
+#battery     { color: @green;  }
+
+#temperature.critical,
+#battery.critical:not(.charging) {
+  color: @base;
+  background: @red;
+}
+
+#battery.warning:not(.charging) { color: @yellow; }
+#network.disconnected           { color: @red;    }
+#pulseaudio.muted               { color: @surface1; }
+
+#custom-power {
+  color: @red;
+  padding: 0 12px;
+}
+
+#custom-power:hover {
+  background: @red;
+  color: @base;
+}
+
+tooltip {
+  background: @mantle;
+  border: 1px solid @surface0;
+  border-radius: 10px;
+}
+
+tooltip label { color: @text; padding: 4px; }
